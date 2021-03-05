@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+    app: ecommerce
+spec:
+  containers:
+  - name: nginx-ecommerce
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "myKey"
+    operator: "Exists"
+    effect: "NoSchedule"

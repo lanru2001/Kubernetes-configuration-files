@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: myapp-python 
+    function: frontend
+    environment: dev 
+spec:
+  # modify replicas to three
+  replicas: 2
+  selector:
+    imatchLabels:
+      app: nginx-app
+      function: backend 
+      env: prd
+      bu: devops       
+  template:
+    metadata:
+      labels:
+        app: myapp 
+        function: backend
+        env: prd
+        bu: devops 
+    spec:
+      containers:
+      - name: nginx-container 
+        image: nginx

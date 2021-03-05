@@ -1,0 +1,14 @@
+---
+
+apiVersion: kubescheduler.config.k8s.io/v1beta1
+kind: KubeSchedulerConfiguration
+profiles:
+  - plugins:
+      score:
+        disabled:
+        - name: NodeResourcesLeastAllocated
+        enabled:
+        - name: MyCustomPluginA
+          weight: 2
+        - name: MyCustomPluginB
+          weight: 1

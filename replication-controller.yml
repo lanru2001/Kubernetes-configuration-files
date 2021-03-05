@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mysql-app
+  labels: 
+    app: myapp1
+    function: backend 
+spec:
+  replicas: 3
+  selector:
+    app: myapp1
+    function: backend
+  template:
+    metadata:
+      name: mysql-app
+      labels:
+        app: myapp1
+        function: backend
+    spec:
+      schedulerName: sysdigsched
+      containers:
+      - name: mySQL-app
+        image: mysql:latest
+        ports:
+        - name: mysql
+          containerPort: 3306
