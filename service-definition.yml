@@ -8,20 +8,3 @@ spec:
     app: my-app
   ports: 
 apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    test: liveness
-  name: liveness-nginx
-spec:
-  containers:
-  - args:
-    - /server
-    image: nginx 
-    livenessProbe:
-      httpGet:
-        # when "host" is not defined, "PodIP" will be used
-        # host: my-host
-        # when "schs
-   - protocol: tcp
-     port: 80
